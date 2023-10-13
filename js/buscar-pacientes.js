@@ -1,19 +1,20 @@
 var botaoBuscar = document.querySelector("#botao-buscar");
-botaoBuscar.addEventListener("click", function(){
-    //objeto do javascript capaz de fazer requisições http
-    
-    var xhr = new XMLHttpRequest(); 
+botaoBuscar.addEventListener("click", function() {
+    // Objeto do JavaScript capaz de fazer requisições HTTP
+    var xhr = new XMLHttpRequest();
 
-    xhr.open("GET", "https://raw.githubusercontent.com/loresgarcia/Pacientes-API/master/pacientes.json");
+    xhr.open("GET", "http://localhost:8080/medicos");
 
-    xhr.addEventListener("load", function(){
-        var resposta = xhr.responseText
-        var pacientes = JSON.parse(resposta);
-
-
-        pacientes.forEach(function(pacienteobj){
-            adicionaPacienteNaTabele(pacienteobj)
-        })
+    xhr.addEventListener("load", function() {
+        var resposta = xhr.responseText; // Supondo que resposta seja uma string que não é JSON válido
+        //resposta = '[' + resposta + ']'; // Transforma a string em um array JSON válido
+        var pacientes = JSON.parse(resposta).content;
+        pacientes.forEach(function(paciente) {
+            adicionaPacienteNaTabela(paciente);
+            
+           
+        });
     });
+
     xhr.send();
 });

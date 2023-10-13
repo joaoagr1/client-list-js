@@ -201,3 +201,20 @@ button[disabled=disabled], button:disabled {
 	display: flex;
 	align-items: baseline;
 }
+
+
+
+
+
+.custom-display-4 {
+    font-size: 4.5rem; /* Ajuste o tamanho de fonte conforme necessário */
+}
+
+.navbar{
+	height: 70px;
+	font-size: large;
+}
+
+
+
+

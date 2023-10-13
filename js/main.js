@@ -5,57 +5,57 @@ for (var i = 0; i < paciente.length; i++) {
 
     var menssagemErro = document.querySelector("#menssagem-erro");
 
-    var tdPeso = paciente[i].querySelector(".info-peso");
-    var peso = tdPeso.textContent;
+    var tdnome = paciente[i].querySelector(".info-nome");
+    var nome = tdnome.textContent;
     
-    var tdAltura = paciente[i].querySelector(".info-altura");
-    var altura = tdAltura.textContent;
+    var tdemail = paciente[i].querySelector(".info-email");
+    var email = tdemail.textContent;
    
-    var imc = calculaIMC(altura, peso);
+    var especialidade = calculaespecialidade(email, nome);
 
-    var imcTd = paciente[i].querySelector(".info-imc");
+    var especialidadeTd = paciente[i].querySelector(".info-especialidade");
     
-    imcTd.textContent = imc;
+    especialidadeTd.textContent = especialidade;
     
-    var pesoEhValido = validaPeso(peso);
-    var alturaEhValida = validaAltura(altura);
+    var nomeEhValido = validanome(nome);
+    var emailEhValida = validaemail(email);
     
 
-    if(!pesoEhValido){
-        pesoEhValido = false;
-        imcTd.textContent = "Peso inválido";
+    if(!nomeEhValido){
+        nomeEhValido = false;
+        especialidadeTd.textContent = "nome inválido";
         paciente[i].classList.add("paciente-invalido");
     }
     
-    if(!alturaEhValida){
-        alturaEhValida = false;
-        imcTd.textContent = "Altura inválida";
+    if(!emailEhValida){
+        emailEhValida = false;
+        especialidadeTd.textContent = "email inválida";
         paciente[i].classList.add("paciente-invalido");
     }
     
-    if(alturaEhValida && pesoEhValido){
-        var imc = peso/(altura*altura);
+    if(emailEhValida && nomeEhValido){
+        var especialidade = nome/(email*email);
        
     
     }
     
-    if(!alturaEhValida && !pesoEhValido){
-        imcTd.textContent = "Altura e peso inválidos";
+    if(!emailEhValida && !nomeEhValido){
+        especialidadeTd.textContent = "email e nome inválidos";
         paciente[i].style.backgroundColor = "lightcoral";
     }
 
 }
 
-    function validaPeso(peso) {
-        if(peso > 5 && peso <= 200){
+    function validanome(nome) {
+        if(nome > 5 && nome <= 200){
             return true;
         } else {
             return false
         }
     }
 
-    function validaAltura(altura) {
-        if (altura>0 && altura<2.5) {
+    function validaemail(email) {
+        if (email>0 && email<2.5) {
             return true;
         } else {
             return false}
@@ -63,10 +63,10 @@ for (var i = 0; i < paciente.length; i++) {
     }
 
 
-function calculaIMC(altura, peso) {
-    var imc = 0
-    imc = peso/(altura*altura);
-    return imc.toFixed(2);
+function calculaespecialidade(email, nome) {
+    var especialidade = 0
+    especialidade = nome/(email*email);
+    return especialidade.toFixed(2);
 }
 
 

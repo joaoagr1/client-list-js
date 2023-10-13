@@ -20,12 +20,12 @@ function menssagem(event){
         return ;
     }
 
-    console.log(pacienteobj.peso);
+    console.log(pacienteobj.nome);
 
 
     //Adicionando o paciente na tabela
     
-    adicionaPacienteNaTabele(pacienteobj)
+    adicionaPacienteNaTabela(pacienteobj)
     form.reset();
     //função do form que reseta os campos
 
@@ -40,26 +40,27 @@ function menssagem(event){
     }
 
 
-    function adicionaPacienteNaTabele(pacienteobj){
+    function adicionaPacienteNaTabela(pacienteobj){
         var pacienteTr = montaTr(pacienteobj);
         var tabela = document.querySelector("#tabela-pacientes");
         tabela.appendChild(pacienteTr);
 
+
     }
 
     function validaPaciente(pacienteobj) {
-        if(!validaPeso(pacienteobj.peso) && !validaAltura(pacienteobj.altura)){
-            motivo = "(Peso e altura)";
+        if(!validanome(pacienteobj.nome) && !validaemail(pacienteobj.email)){
+            motivo = "(nome e email)";
             return false;
         }
         
-        if(!validaPeso(pacienteobj.peso) && validaAltura(pacienteobj.altura)){
-            motivo = "(Peso)";
+        if(!validanome(pacienteobj.nome) && validaemail(pacienteobj.email)){
+            motivo = "(nome)";
             return false
         }
 
-        if (validaPeso(pacienteobj.peso) && !validaAltura(pacienteobj.altura)) {
-            motivo = "(Altura)";
+        if (validanome(pacienteobj.nome) && !validaemail(pacienteobj.email)) {
+            motivo = "(email)";
             return false
         }
 

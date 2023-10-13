@@ -1,44 +1,43 @@
 function montaTr(pacienteobj){
     //cria a tr e a td do paciente
    var pacienteTr = document.createElement("tr");
-   
    pacienteTr.classList.add("paciente");  
+
+   /* var idTd = document.createElement("td");
+   idTd.classList.add("info-id");
+   idTd.textContent = pacienteobj.id; */
+     var idTd = montaTd(pacienteobj.id, "info-id");
 
    /* var nomeTd = document.createElement("td");
    nomeTd.classList.add("info-nome");
    nomeTd.textContent = pacienteobj.nome; */
-     var nomeTd = montaTd(pacienteobj.nome, "info-nome");
-
-   /* var pesoTd = document.createElement("td");
-   pesoTd.classList.add("info-peso");
-   pesoTd.textContent = pacienteobj.peso; */
-     var pesoTd = montaTd(pacienteobj.peso, "info-peso")
+     var nomeTd = montaTd(pacienteobj.nome, "info-nome")
 
 
-   /* var alturaTd= document.createElement("td");
-   alturaTd.classList.add("info-altura");
-   alturaTd.textContent = pacienteobj.altura; */
-      var alturaTd = montaTd(pacienteobj.altura, "info-altura")
+   /* var emailTd= document.createElement("td");
+   emailTd.classList.add("info-email");
+   emailTd.textContent = pacienteobj.email; */
+      var emailTd = montaTd(pacienteobj.email, "info-email")
 
 
-  /*  var gorduraTd= document.createElement("td");
-   gorduraTd.classList.add("info-gordura");
-   gorduraTd.textContent = pacienteobj.gordura; */
-      var gorduraTd = montaTd(pacienteobj.gordura, "info-gordura")
+  /*  var crmTd= document.createElement("td");
+   crmTd.classList.add("info-crm");
+   crmTd.textContent = pacienteobj.crm; */
+      var crmTd = montaTd(pacienteobj.crm, "info-crm")
 
 
-  /*  var imcTd= document.createElement("td");
-   imcTd.classList.add("info-mc");
-   imcTd.textContent = pacienteobj.imc; */
-     var imcTd = montaTd(pacienteobj.imc, "info-imc")
+  /*  var especialidadeTd= document.createElement("td");
+   especialidadeTd.classList.add("info-mc");
+   especialidadeTd.textContent = pacienteobj.especialidade; */
+     var especialidadeTd = montaTd(pacienteobj.especialidade, "info-especialidade")
    
    
    
+   pacienteTr.appendChild(idTd);
    pacienteTr.appendChild(nomeTd);
-   pacienteTr.appendChild(pesoTd);
-   pacienteTr.appendChild(alturaTd);
-   pacienteTr.appendChild(gorduraTd);
-   pacienteTr.appendChild(imcTd);
+   pacienteTr.appendChild(emailTd);
+   pacienteTr.appendChild(crmTd);
+   pacienteTr.appendChild(especialidadeTd);
 
    return pacienteTr;
 }
@@ -51,20 +50,16 @@ function obtemPacienteFormulario(form){
     //extrai informações do form  
     
     var pacienteobj = {
+        id: form.id.value,
         nome: form.nome.value,
-        peso: form.peso.value,
-        altura: form.altura.value,
-        gordura: form.gordura.value,
-        imc: calculaIMC(form.altura.value,form.peso.value)}
+        email: form.email.value,
+        crm: form.crm.value,
+        especialidade: form.especialidade.value}
 
         return pacienteobj;
     }
 
-    function calculaIMC(altura, peso) {
-        var imc = 0
-        imc = peso/(altura*altura);
-        return imc.toFixed(2);
-    }
+   
 
     function montaTd(dado,classe) {
         var td = document.createElement("td");
