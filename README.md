@@ -2,6 +2,8 @@
 
 Welcome to the Nutritionist Client Management System repository! This web application allows a nutritionist to manage a list of clients, perform CRUD operations, and automatically calculate the Body Mass Index (BMI) for each client.
 
+![Descrição da Imagem](print.jpg)
+
 ## Features
 
 - Create, Read, Update, and Delete clients
